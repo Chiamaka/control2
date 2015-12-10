@@ -25,70 +25,70 @@
 
             <!-- INJECT DASHBOARD VIEW  -->
 
-                  <!-- Page-Title -->
+            <!-- Page-Title -->
             <div class="row">
-            <div class="col-sm-12">
-              <h4 class="page-title">Bank Dashboard</h4>
-              <p class="text-muted page-title-alt">
+              <div class="col-sm-12">
+                <h4 class="page-title">Bank Dashboard</h4>
+                <p class="text-muted page-title-alt">
 
-              </p>
+                </p>
+              </div>
             </div>
-            </div>
 
 
 
-           <div class="row" id="dashboard">
+            <div class="row" id="dashboard">
               <div class="col-sm-12">
                 <div class="card-box">
                   <div><h1>Dashboard</h1></div>
-                                                       
-                      <%= render 'banks/layouts/dashboard' %>
+                  
+                  <%= render 'banks/layouts/dashboard' %>
 
                 </div>
               </div>
-        </div>
+            </div>
 
-           <div class="row" id="transactions">
+            <div class="row" id="transactions">
               <div class="col-sm-12">
                 <div class="card-box">
                   
                   <div><h1>Transactions</h1></div>
 
                   
-                      <%= render 'banks/layouts/transactions' %>
+                  <%= render 'banks/layouts/transactions' %>
 
                 </div>
               </div>
-        </div>
+            </div>
 
 
-           <div class="row" id="profile">
+            <div class="row" id="profile">
               <div class="col-sm-12">
                 <div class="card-box">
                   
-               
+                 
                   <div><h1>Profile</h1></div>
 
-                      
-                      <%= render 'banks/layouts/profile' %>
-  
-                  </div>
+                  
+                  <%= render 'banks/layouts/profile' %>
+                  
+                </div>
 
               </div>
-          </div>
+            </div>
 
-           <div class="row" id="accounts">
+            <div class="row" id="accounts">
               <div class="col-sm-12">
                 <div class="card-box">
                   
-                <div><h1>Accounts</h1></div>
-                
+                  <div><h1>Accounts</h1></div>
+                  
 
-                      <%= render 'banks/layouts/accounts' %>
+                  <%= render 'banks/layouts/accounts' %>
 
                 </div>
               </div>
-           </div>
+            </div>
 
 
 
@@ -114,70 +114,70 @@
 
   </div>
 
-<div id="tran" style="width:100%" class="modal " role="dialog">
+  <div id="tran" style="width:100%" class="modal " role="dialog">
+    <div class="modal-dialog" >
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <thead>
+           <tr>
+
+            <th>Transaction Type</th>
+            <th>Transaction Amount</th>
+            <th>Account Balance</th>
+            <th>Transaction Date</th>
+          </tr>
+        </thead>
+        <tbody class=\"searchable\">
+          <div id="mod-data"></div>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div id="docs" style="width:60%" class="modal " role="dialog">
   <div class="modal-dialog" >
 
     <!-- Modal content-->
     <div class="modal-content">
 
       <div class="modal-body">
-        <thead>
-         <tr>
+        <pre>
+          <p>This is the API documentation for the Control Suite. Step-by-step instructions of how you can interface with our API to get the best result.
+            There are a couple of things you can accomplish with our API and they are as follows:</p> 
+            <u>Token: <%= @bank.token %></u>
+            <ol>
+              <li>Get Transactions i.e Retrieve transactions that are related to your bank</li>
+              <li>Post Transactions i.e Push transactions pertaining to your bank onto the control suite platform</li>
+              <li>Get Users</li>
+              <li>Create Users</li>
+            </ol>
 
-          <th>Transaction Type</th>
-          <th>Transaction Amount</th>
-          <th>Account Balance</th>
-          <th>Transaction Date</th>
-        </tr>
-      </thead>
-      <tbody class=\"searchable\">
-        <div id="mod-data"></div>
+            <u>Get transactions</u>
+            http://localhost:3000/transactions.json
+            {code here}
+            <u>post transactions</u>
+            {json here}
+            {code here}
+            <u>get user</u>
+            {json here}
+            {code here}
+            <u>create user</u>
+            {json here}
+            {code here}
 
-      </tbody>
-    </table>
+          </pre>
 
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
-
-
-
-
-            <div id="docs" style="width:60%" class="modal " role="dialog">
-              <div class="modal-dialog" >
-
-                <!-- Modal content-->
-                <div class="modal-content">
-
-                  <div class="modal-body">
-                    <pre>
-                      <p>This is the API documentation for the Control Suite. Step-by-step instructions of how you can interface with our API to get the best result.
-                        There are a couple of things you can accomplish with our API and they are as follows:</p> 
-                        <u>Token: <%= @bank.token %></u>
-                        <ol>
-                          <li>Get Transactions i.e Retrieve transactions that are related to your bank</li>
-                          <li>Post Transactions i.e Push transactions pertaining to your bank onto the control suite platform</li>
-                          <li>Get Users</li>
-                          <li>Create Users</li>
-                        </ol>
-
-                        <u>Get transactions</u>
-                        http://localhost:3000/transactions.json
-                        {code here}
-                        <u>post transactions</u>
-                        {json here}
-                        {code here}
-                        <u>get user</u>
-                        {json here}
-                        {code here}
-                        <u>create user</u>
-                        {json here}
-                        {code here}
-
-                      </pre>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
