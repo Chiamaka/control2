@@ -32,10 +32,8 @@
   def getTransactions
     @bank_id = params[:bank]
     if Transaction.find_by(bank_id: @bank_id).present?
-      @transaction = Transaction.find_by(bank_id: @bank_id)
-      @citizen_id = @transaction.citizen_id
-      @citizen_name = Citizen.find(@citizen_id).name
-      @citizen_national_id = Citizen.find(@citizen_id).national_id
+      @transactions = Transaction.where(bank_id: @bank_id)
+      
     else
       @empty = "No transactions for this bank"
     end
@@ -48,13 +46,8 @@
   def getCustomers
     @bank_id = params[:bank]
     if CitizenBankDatum.find_by(bank_id: @bank_id).present?
-      @citizen_bank = CitizenBankDatum.find_by(bank_id: @bank_id)
-      @citizen = @citizen_bank.citizen
-      @citizen_name = @citizen.name
-      @citizen_number = @citizen.phone_num
-      @citizen_email = @citizen.email
-      @citizen_address = @citizen.address
-      @citizen_national_id = @citizen.national_id
+      @citizen_banks = CitizenBankDatum.where(bank_id: @bank_id)
+    
     else
       @empty = "No customers for this bank"
     end
