@@ -6,22 +6,25 @@
   # GET /banks.json
   def index
   # @banks = Bank.all
-   
-   render layout: true, action: :show
+    render layout: true, action: :show
   end
   
   # GET /banks/1
   # GET /banks/1.json
   def show
-     @number_of_customers = @bank.citizen_bank_data.select(:national_id).map(&:national_id).uniq.count
-     @number_of_accounts = @bank.citizen_bank_data.count
-     @number_of_transactions = @bank.transactions.count 
+    puts @current_Bank.methods
+    if @bank.id != params[:id]
+      puts "***************************"
+         render action: :show, id: @bank.id
+    end
+  @number_of_customers = @bank.citizen_bank_data.select(:national_id).map(&:national_id).uniq.count
+  @number_of_accounts = @bank.citizen_bank_data.count
+  @number_of_transactions = @bank.transactions.count   
   end
   
   #displays the different banks in the db
   def display
     @banks = Bank.all
-    @banks = Bank.paginate(:page => params[:page], :per_page => 25)
     render :template => "banks/index", layout: true
   end
   
@@ -110,12 +113,12 @@
   #get getTransaction
     def getTransactionApi
   #fetch data pertaining to that bank
-      @bank = Bank.find_by(:token => params[:token])
+      bank = Bank.find_by(:token => params[:token])
       respond_to do |format|
-        if  @bank
-          if  @bank.token == params[:token]
+        if  bank
+          if  bank.token == params[:token]
             #bank=banks.where(:token =>"32147").limit(20)
-            @transactions = OpenStruct.new( :transactions => @bank.transactions ,:status => 200 ,:message =>"REQUEST SUCCESSFUL")
+            @transactions = OpenStruct.new( :transactions => bank.transactions ,:status => 200 ,:message =>"REQUEST SUCCESSFUL")
             format.json { render json: @transactions }
           end
         else
@@ -163,6 +166,4 @@
     def bank_params
       params.require(:bank).permit(:name, :bank_type, :registration_no, :founded_data, :main_service, :bank_email, :bank_website, :bank_logo_url, :token)
     end
-
-
  end

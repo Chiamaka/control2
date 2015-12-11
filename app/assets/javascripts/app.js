@@ -86,7 +86,7 @@ function transaction(id,token) {
 	request(function (jsondata) {
 		object = JSON.parse(jsondata);
 		var data = object.table.transactions;
-		for(i=0 ; data.length>i ;i++){
+		for(i = 0 ; data.length > i ;i++){
 			imediateData=data[i];
 			if(imediateData.citizen_id === id ){
 

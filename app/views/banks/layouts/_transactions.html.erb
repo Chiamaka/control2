@@ -1,8 +1,8 @@
 <div>  
                       <div style="margin-top:5%" class="accounts">
-                        <div style="display:none">
-                          <% citizens = @bank.citizen_bank_data %>
+                        <div style="display:block">
                         </div>
+                          <% trans = @bank.transactions%>
 
 
                         <div class="input-group"> <span class="input-group-addon">Filter</span>
@@ -13,28 +13,28 @@
                           <thead>
                             <tr>
                               <th>#</th>
-                              <th>Name</th>
-                              <th>Acc #</th>
+                              <th>Citizen Name</th>
+                              <th>Transaction Type</th>
                               <th>Transaction Amount</th>
                               <th>Account Balance</th>
-                              <th>Last transaction Date</th>
+                              <th>Transaction Date<sdff/th>
                             </tr>
                           </thead>
                           <tbody class="searchable">
                             <div style="display:none">
                               <%= count=0 %>
                             </div>
-                            <% citizens.each do |citizen| %>
+                            <% trans.each do |tran| %>
                             <tr>
                               <div style="display:none">
-                               <%= citizenbio= Citizen.find_by(:id => citizen.citizen_id ) %>
+                               <%= citizenbio= Citizen.find_by(:id => tran.citizen_id ) %>
                              </div>
                              <td><%= count=count+1 %> </td>
-                             <td data-toggle="modal" data-target="#tran" onclick="transaction(<%= citizen.id %> ,'<%= @bank.token %>')"><%= citizenbio.name %></td>
-                             <td><%= citizen.account_id %></td>
-                             <td><%= citizenbio.transactions.last.transaction_amount %></td>
-                             <td><%= citizenbio.transactions.last.account_balance %></td>
-                             <td><%= citizenbio.transactions.last.created_at   %></td>
+                             <td><%= citizenbio.name %> </td>
+                             <td ><%= tran.transaction_name %></td>
+                             <td><%= tran.transaction_amount %></td>
+                             <td><%= tran.account_balance%></td>
+                             <td><%= tran.created_at   %></td>
                            </tr>
                            <% end %> 
                            <% if count == 0 %>
